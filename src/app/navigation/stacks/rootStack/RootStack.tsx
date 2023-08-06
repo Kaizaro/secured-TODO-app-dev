@@ -3,7 +3,7 @@ import {ROOT_STACK} from './RootStack.screens';
 import {NO_HEADER_SCREEN_OPTIONS} from '../../constants';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import App from '../../../../../App';
-import {NotesList} from '../../../../modules/notes';
+import {NotesList} from '../../../../modules/TODO';
 
 const Stack = createNativeStackNavigator();
 

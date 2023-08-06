@@ -1,7 +1,7 @@
 import React, {FC, useCallback} from 'react';
-import {EmptyList} from '../../../../../../shared/ui';
-import {ROOT_STACK, routeNavigate} from '../../../../../../app/navigation';
-import {IDefaultFC} from '../../../../../../shared/types';
+import {EmptyList} from '../../../../../shared/ui';
+import {ROOT_STACK, routeNavigate} from '../../../../../app/navigation';
+import {IDefaultFC} from '../../../../../shared/types';
 
 // Const for render empty list message.
 // If using localisation - needs to be changed to locale key.

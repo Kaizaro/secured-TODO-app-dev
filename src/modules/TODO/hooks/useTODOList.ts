@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 
-const useNotesList = () => {
+const useTODOList = () => {
   const dispatch = useAppDispatch();
   const notesList = useAppSelector((state) => state.TODO.TODOList);
 
@@ -36,4 +36,4 @@ const useNotesList = () => {
   return {notesList, handleAddNoteToList, handleSelectNote, handleRemoveNoteFromList};
 };
 
-export {useNotesList};
+export {useTODOList};

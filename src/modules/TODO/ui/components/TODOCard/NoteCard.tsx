@@ -1,13 +1,13 @@
 import React, {FC, useCallback} from 'react';
-import {Card} from '../../../../../../shared/ui/card/Card';
+import {Card} from '../../../../../shared/ui/card/Card';
 import {INoteCard} from './NoteCard.types';
-import {BoldText, RegularText, ThinText} from '../../../../../../shared/ui';
+import {BoldText, RegularText, ThinText} from '../../../../../shared/ui';
 import {noteCardStyles as styles} from './NoteCard.styles';
-import {APP_COLORS} from '../../../../../../app/theme';
-import {useNotesList} from '../../../../hooks';
+import {APP_COLORS} from '../../../../../app/theme';
+import {useTODOList} from '../../../hooks';
 
 const NoteCard: FC<INoteCard> = ({note, innerStyle}) => {
-  const {handleSelectNote} = useNotesList();
+  const {handleSelectNote} = useTODOList();
 
   const handleCardPress = useCallback(() => {
     handleSelectNote(note);

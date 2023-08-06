@@ -1,5 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {scaleVertical} from '../../../../../../app/theme';
+import {scaleVertical} from '../../../../../app/theme';
 
 export const noteCardStyles = StyleSheet.create({
   noteCardContainer: {} as ViewStyle,
