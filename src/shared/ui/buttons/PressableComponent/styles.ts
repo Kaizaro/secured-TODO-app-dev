@@ -1,10 +1,8 @@
 import {ViewStyle} from 'react-native';
 
-import {
-  APP_TOUCHABLE_ACTIVE_OPACITY,
-  APP_TOUCHABLE_DISABLED_OPACITY,
-  APP_TOUCHABLE_INACTIVE_OPACITY,
-} from '@app/constants';
+export const APP_TOUCHABLE_INACTIVE_OPACITY = 1;
+export const APP_TOUCHABLE_ACTIVE_OPACITY = 0.7;
+export const APP_TOUCHABLE_DISABLED_OPACITY = 0.3;
 
 export const HIT_SLOP_TOUCHABLE = {
   top: 16,

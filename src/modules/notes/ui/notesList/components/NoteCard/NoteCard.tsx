@@ -1,3 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
+import { Card } from "../../../../../../shared/ui/card/Card";
 
-const
+const NoteCard: FC<> = () => {
+  return (
+    <Card>
+
+    </Card>
+  );
+};
+
+export {NoteCard};

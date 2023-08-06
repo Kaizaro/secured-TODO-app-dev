@@ -1,6 +1,7 @@
 export interface INote {
+  id: string;
   title?: string;
-  note: string;
+  text: string;
   updatedAt: string;
   isSelected: boolean;
 }
