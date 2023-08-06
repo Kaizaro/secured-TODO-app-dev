@@ -14,7 +14,7 @@ const TODOListScreen: FC = () => {
   const {TODOList} = useTODOList();
 
   const handleAddButtonPress = useCallback(() => {
-    routeNavigate(ROOT_STACK.TODO_EDIT);
+    routeNavigate(ROOT_STACK.TODO_ADD);
   }, []);
 
   const renderNoteCards = useCallback<ListRenderItem<ITODO>>(({item}) => {
