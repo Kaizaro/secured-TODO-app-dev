@@ -3,7 +3,6 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
-import { cloneDeep, drop } from "lodash";
 
 const useTODOList = () => {
   const dispatch = useAppDispatch();
@@ -26,18 +25,9 @@ const useTODOList = () => {
 
   const handleRemoveTODOFromList = useCallback(
     (note: ITODO) => {
-      // Try to find note index in TODO list
-      const noteIndex = TODOList.findIndex((noteItem) => note.id === noteItem.id);
-      console.log('noteIndex', noteIndex);
-
-      const array = drop(TODOList, noteIndex);
-
-      // remove note by index from TODO list
-      // let modifiedArray = cloneDeep(TODOList);
-      // console.log('modifiedArray', modifiedArray);
-      // modifiedArray = modifiedArray.splice(noteIndex, 1);
-      // console.log('modifiedArray_splice', modifiedArray);
-      // dispatch(TODOSliceActions.setNotesList(modifiedArray));
+      // Filter TODO list without TODO item which need to be deleted
+      const filteredArray = TODOList.filter((state) => note.id !== state.id);
+      dispatch(TODOSliceActions.setNotesList(filteredArray));
     },
     [dispatch, TODOList],
   );
