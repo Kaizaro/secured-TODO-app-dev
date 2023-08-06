@@ -45,7 +45,7 @@ export const ButtonBase: FC<IButtonBase> = ({
       {...props}>
       {!loading && (
         <RegularText numberOfLines={numberOfLines} color={textColor} innerStyle={textStyle}>
-          {text}
+          {text ?? props.children}
         </RegularText>
       )}
       {loading && <ButtonLoader color={loaderColor ?? textColor} />}

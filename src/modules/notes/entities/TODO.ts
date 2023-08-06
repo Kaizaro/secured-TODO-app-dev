@@ -1,6 +1,5 @@
-export interface INote {
+export interface ITODO {
   id: string;
-  title?: string;
   text: string;
   updatedAt: string;
   isSelected: boolean;

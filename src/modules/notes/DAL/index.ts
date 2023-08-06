@@ -1,3 +1,3 @@
-export * from './notesSlice.initialState';
-export * from './notesSlice.reducer';
-export * from './notesSlice.types';
+export * from './TODOSlice.initialState';
+export * from './TODOSlice.reducer';
+export * from './TODOSlice.types';

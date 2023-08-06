@@ -2,7 +2,7 @@ import {useMemo} from 'react';
 import {useAppSelector} from '../../../app/store/hooks';
 
 const useSelectedNote = () => {
-  const selectedNote = useAppSelector((state) => state.notes.selectedNote);
+  const selectedNote = useAppSelector((state) => state.notes.selectedTODO);
   const noteId = useMemo(() => selectedNote?.id, [selectedNote?.id]);
   const noteTitle = useMemo(() => selectedNote?.title, [selectedNote?.title]);
   const noteText = useMemo(() => selectedNote?.text, [selectedNote?.text]);
