@@ -30,7 +30,8 @@ const useTODOList = () => {
       console.log('noteIndex', noteIndex);
 
       // remove note by index from TODO list
-      const modifiedArray = TODOList.splice(noteIndex, 1);
+      let modifiedArray = [...TODOList];
+      modifiedArray = modifiedArray.splice(noteIndex, 1);
       dispatch(TODOSliceActions.setNotesList(modifiedArray));
     },
     [dispatch, TODOList],
