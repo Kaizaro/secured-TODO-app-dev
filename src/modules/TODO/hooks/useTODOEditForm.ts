@@ -35,14 +35,19 @@ export const useTODOEditForm = () => {
     routeBack();
   }, [TODOInputValue, handleAddTODOToList]);
 
-  const handleEditTODO = useCallback(() => {
-    handleEditTODOInList({
-      text: TODOInputValue,
-      updatedAt: dayjs().format('YYYY/MM/DD HH:mm'),
-      timestamp: dayjs().valueOf(),
-    });
-    routeBack();
-  }, [TODOInputValue, handleEditTODOInList]);
+  const handleEditTODO = useCallback(
+    (id: string) => {
+      handleEditTODOInList({
+        id,
+        text: TODOInputValue,
+        updatedAt: dayjs().format('YYYY/MM/DD HH:mm'),
+        timestamp: dayjs().valueOf(),
+        isSelected: false,
+      });
+      routeBack();
+    },
+    [TODOInputValue, handleEditTODOInList],
+  );
 
   return {
     TODOInputValue,

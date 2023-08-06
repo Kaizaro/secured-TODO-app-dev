@@ -9,6 +9,11 @@ const useTODOList = () => {
   const dispatch = useAppDispatch();
   const TODOList = useAppSelector((state) => state.TODO.TODOList);
 
+  const sortTODOList = useCallback(
+    () => TODOList.sort((itemA, itemB) => itemB.timestamp - itemA.timestamp),
+    [TODOList],
+  );
+
   const handleAddTODOToList = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
@@ -44,7 +49,14 @@ const useTODOList = () => {
     [dispatch, TODOList],
   );
 
-  return {TODOList, handleAddTODOToList, handleEditTODOInList, handleSelectTODO, handleRemoveTODOFromList};
+  return {
+    TODOList,
+    sortTODOList,
+    handleAddTODOToList,
+    handleEditTODOInList,
+    handleSelectTODO,
+    handleRemoveTODOFromList,
+  };
 };
 
 export {useTODOList};
