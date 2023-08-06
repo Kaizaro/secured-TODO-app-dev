@@ -20,6 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcode.env.local
 
 # Android/IntelliJ
 #
@@ -80,3 +81,8 @@ index.android.bundle.map
 index.android.bundle.hbc
 index.android.bundle.hbc.map
 index.android.bundle.packager.map
+
+# Expo
+.expo
+dist/
+web-build/
