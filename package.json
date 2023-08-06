@@ -57,7 +57,10 @@
     "pod-install": "^0.1.38",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.0.1",
+    "react-native-flipper": "^0.210.0",
     "react-test-renderer": "18.2.0",
+    "redux-flipper": "^2.0.2",
+    "rn-mmkv-storage-flipper": "^1.1.1",
     "typescript": "^5.1.6"
   },
   "engines": {
