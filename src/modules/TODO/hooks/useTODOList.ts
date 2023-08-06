@@ -5,35 +5,35 @@ import {TODOSliceActions} from '../DAL';
 
 const useTODOList = () => {
   const dispatch = useAppDispatch();
-  const notesList = useAppSelector((state) => state.TODO.TODOList);
+  const TODOList = useAppSelector((state) => state.TODO.TODOList);
 
-  const handleAddNoteToList = useCallback(
+  const handleAddTODOToList = useCallback(
     (note: ITODO) => {
-      dispatch(TODOSliceActions.setNotesList([...notesList, note]));
+      dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
     },
-    [dispatch, notesList],
+    [dispatch, TODOList],
   );
 
-  const handleSelectNote = useCallback(
+  const handleSelectTODO = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setSelectedNote(note));
     },
     [dispatch],
   );
 
-  const handleRemoveNoteFromList = useCallback(
+  const handleRemoveTODOFromList = useCallback(
     (note: ITODO) => {
       // Try to find note index in TODO list
-      const noteIndex = notesList.findIndex((noteItem) => note.id === noteItem.id);
+      const noteIndex = TODOList.findIndex((noteItem) => note.id === noteItem.id);
 
       // remove note by index from TODO list
-      const modifiedArray = notesList.splice(noteIndex, 1);
+      const modifiedArray = TODOList.splice(noteIndex, 1);
       dispatch(TODOSliceActions.setNotesList(modifiedArray));
     },
-    [dispatch, notesList],
+    [dispatch, TODOList],
   );
 
-  return {notesList, handleAddNoteToList, handleSelectNote, handleRemoveNoteFromList};
+  return {TODOList, handleAddTODOToList, handleSelectTODO, handleRemoveTODOFromList};
 };
 
 export {useTODOList};

@@ -2,14 +2,13 @@ import {useMemo} from 'react';
 import {useAppSelector} from '../../../app/store/hooks';
 
 const useSelectedTODO = () => {
-  const selectedNote = useAppSelector((state) => state.TODO.selectedTODO);
-  const noteId = useMemo(() => selectedNote?.id, [selectedNote?.id]);
-  const noteTitle = useMemo(() => selectedNote?.title, [selectedNote?.title]);
-  const noteText = useMemo(() => selectedNote?.text, [selectedNote?.text]);
-  const noteUpdatedAt = useMemo(() => selectedNote?.updatedAt, [selectedNote?.updatedAt]);
-  const isNoteSelected = useMemo(() => selectedNote?.isSelected, [selectedNote?.isSelected]);
+  const selectedTODO = useAppSelector((state) => state.TODO.selectedTODO);
+  const noteId = useMemo(() => selectedTODO?.id, [selectedTODO?.id]);
+  const noteText = useMemo(() => selectedTODO?.text, [selectedTODO?.text]);
+  const noteUpdatedAt = useMemo(() => selectedTODO?.updatedAt, [selectedTODO?.updatedAt]);
+  const isNoteSelected = useMemo(() => selectedTODO?.isSelected, [selectedTODO?.isSelected]);
 
-  return {noteId, noteTitle, noteText, noteUpdatedAt, isNoteSelected};
+  return {noteId, noteText, noteUpdatedAt, isNoteSelected};
 };
 
 export {useSelectedTODO};

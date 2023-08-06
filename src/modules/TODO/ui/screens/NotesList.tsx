@@ -8,7 +8,7 @@ import {notesListStyles as styles} from './NotesList.styles';
 import {EmptyNotesList} from '../components';
 
 const NotesList: FC = () => {
-  const {notesList} = useTODOList();
+  const {TODOList} = useTODOList();
 
   const renderNoteCards = useCallback<ListRenderItem<ITODO>>(({item}) => {
     return <NoteCard note={item} />;
@@ -21,7 +21,7 @@ const NotesList: FC = () => {
   return (
     <ComponentContainer isTopEdged={true}>
       <FlatList
-        data={notesList}
+        data={TODOList}
         renderItem={renderNoteCards}
         bounces={false}
         showsVerticalScrollIndicator={false}
