@@ -7,7 +7,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: MMKV_STORAGE,
-  whitelist: [],
+  whitelist: ['TODO'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

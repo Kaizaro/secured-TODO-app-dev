@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
+import { cloneDeep, drop } from "lodash";
 
 const useTODOList = () => {
   const dispatch = useAppDispatch();
@@ -29,10 +30,14 @@ const useTODOList = () => {
       const noteIndex = TODOList.findIndex((noteItem) => note.id === noteItem.id);
       console.log('noteIndex', noteIndex);
 
+      const array = drop(TODOList, noteIndex);
+
       // remove note by index from TODO list
-      let modifiedArray = [...TODOList];
-      modifiedArray = modifiedArray.splice(noteIndex, 1);
-      dispatch(TODOSliceActions.setNotesList(modifiedArray));
+      // let modifiedArray = cloneDeep(TODOList);
+      // console.log('modifiedArray', modifiedArray);
+      // modifiedArray = modifiedArray.splice(noteIndex, 1);
+      // console.log('modifiedArray_splice', modifiedArray);
+      // dispatch(TODOSliceActions.setNotesList(modifiedArray));
     },
     [dispatch, TODOList],
   );
