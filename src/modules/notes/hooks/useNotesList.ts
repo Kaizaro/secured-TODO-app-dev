@@ -5,7 +5,7 @@ import {TODOSliceActions} from '../DAL';
 
 const useNotesList = () => {
   const dispatch = useAppDispatch();
-  const notesList = useAppSelector((state) => state.notes.TODOList);
+  const notesList = useAppSelector((state) => state.TODO.TODOList);
 
   const handleAddNoteToList = useCallback(
     (note: ITODO) => {
@@ -23,10 +23,10 @@ const useNotesList = () => {
 
   const handleRemoveNoteFromList = useCallback(
     (note: ITODO) => {
-      // Try to find note index in notes list
+      // Try to find note index in TODO list
       const noteIndex = notesList.findIndex((noteItem) => note.id === noteItem.id);
 
-      // remove note by index from notes list
+      // remove note by index from TODO list
       const modifiedArray = notesList.splice(noteIndex, 1);
       dispatch(TODOSliceActions.setNotesList(modifiedArray));
     },
