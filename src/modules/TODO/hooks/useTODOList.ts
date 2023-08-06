@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
+import {cloneDeep} from 'lodash';
 
 const useTODOList = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +12,17 @@ const useTODOList = () => {
   const handleAddTODOToList = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
+    },
+    [dispatch, TODOList],
+  );
+
+  const handleEditTODOInList = useCallback(
+    (note: ITODO) => {
+      const clonedTODOList = cloneDeep(TODOList);
+      const noteIndex = clonedTODOList.findIndex((noteItem) => note.id === noteItem.id);
+      clonedTODOList[noteIndex] = {...note};
+      console.log('clonedTODOList', clonedTODOList);
+      dispatch(TODOSliceActions.setNotesList(clonedTODOList));
     },
     [dispatch, TODOList],
   );
@@ -32,7 +44,7 @@ const useTODOList = () => {
     [dispatch, TODOList],
   );
 
-  return {TODOList, handleAddTODOToList, handleSelectTODO, handleRemoveTODOFromList};
+  return {TODOList, handleAddTODOToList, handleEditTODOInList, handleSelectTODO, handleRemoveTODOFromList};
 };
 
 export {useTODOList};

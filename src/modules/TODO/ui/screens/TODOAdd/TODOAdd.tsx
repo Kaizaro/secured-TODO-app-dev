@@ -3,22 +3,16 @@ import {ComponentContainer} from '../../../../../shared/ui';
 import {TextInput} from 'react-native';
 import {useSelectedTODO} from '../../../hooks';
 import {useTODOEditForm} from '../../../hooks/useTODOEditForm';
-import {TODOEditStyles as styles} from './TODOEdit.styles';
+import {TODOAddStyles as styles} from './TODOAdd.styles';
 import {ButtonMain} from '../../../../../shared/ui/buttons';
 
-const TODOEdit: FC = () => {
+const TODOAdd: FC = () => {
   const {TODOText} = useSelectedTODO();
-  const {TODOInputValue, handleSetTODOInputValue, handleClearTODOInputValue, handleEditTODO} = useTODOEditForm();
+  const {TODOInputValue, handleSetTODOInputValue, handleClearTODOInputValue, handleSaveTODOToList} = useTODOEditForm();
   const isButtonDisabled = TODOInputValue.length === 0;
 
   useEffect(() => {
-    if (TODOText && TODOText.length > 0) {
-      handleSetTODOInputValue(TODOText);
-    }
-
-    return () => {
-      handleClearTODOInputValue();
-    };
+    handleClearTODOInputValue();
   }, [TODOText, handleClearTODOInputValue, handleSetTODOInputValue]);
 
   return (
@@ -33,9 +27,14 @@ const TODOEdit: FC = () => {
         // keyboardType={'email-address'}
         // returnKeyType={'done'}
       />
-      <ButtonMain onPress={handleEditTODO} text={'Edit TODO'} disabled={isButtonDisabled} innerStyle={styles.button} />
+      <ButtonMain
+        onPress={handleSaveTODOToList}
+        text={'Save TODO'}
+        disabled={isButtonDisabled}
+        innerStyle={styles.button}
+      />
     </ComponentContainer>
   );
 };
 
-export {TODOEdit};
+export {TODOAdd};
