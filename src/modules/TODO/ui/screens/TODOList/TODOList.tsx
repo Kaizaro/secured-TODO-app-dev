@@ -10,7 +10,7 @@ import {ROOT_STACK, routeNavigate} from '../../../../../app/navigation';
 import {ButtonMain} from '../../../../../shared/ui/buttons';
 
 const TODOListScreen: FC = () => {
-  const {TODOList, sortTODOList} = useTODOList();
+  const {TODOList} = useTODOList();
 
   const handleAddButtonPress = useCallback(() => {
     routeNavigate(ROOT_STACK.TODO_ADD);
@@ -29,7 +29,7 @@ const TODOListScreen: FC = () => {
   return (
     <ComponentContainer isTopEdged={true} innerStyle={styles.container} backgroundColor={APP_COLORS.BORDER}>
       <FlatList
-        data={sortTODOList()}
+        data={TODOList}
         renderItem={renderNoteCards}
         bounces={false}
         showsVerticalScrollIndicator={false}
