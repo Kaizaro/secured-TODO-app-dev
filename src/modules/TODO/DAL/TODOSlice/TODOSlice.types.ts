@@ -1,4 +1,4 @@
-import {ITODO} from '../entities';
+import {ITODO} from '../../entities';
 
 export interface ITODOSlice {
   TODOList: ITODO[];

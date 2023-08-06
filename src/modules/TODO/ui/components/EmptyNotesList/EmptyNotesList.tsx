@@ -11,7 +11,7 @@ const HARDCODED_empty_list_button = 'Add new TODO';
 
 const EmptyNotesList: FC<IDefaultFC> = ({innerStyle}) => {
   const handleAddNewNoteButtonPress = useCallback(() => {
-    routeNavigate(ROOT_STACK.NOTE_EDIT);
+    routeNavigate(ROOT_STACK.TODO_EDIT);
   }, []);
 
   return (

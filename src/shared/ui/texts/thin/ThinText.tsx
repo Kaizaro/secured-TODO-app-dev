@@ -1,14 +1,12 @@
 import React, {FC} from 'react';
 
-import {useTheme} from '@react-navigation/native';
 import {BaseTextProps} from '../base';
 import BaseText from '../base/BaseText';
+import {APP_COLORS} from '../../../../app/theme';
 
 const ThinText: FC<BaseTextProps> = (props) => {
-  const {colors} = useTheme();
-
   return (
-    <BaseText fontSizeScaled={12} fontWeight={'300'} color={colors.text} {...props}>
+    <BaseText fontSizeScaled={12} fontWeight={'300'} color={APP_COLORS.BLACK} {...props}>
       {props.children}
     </BaseText>
   );

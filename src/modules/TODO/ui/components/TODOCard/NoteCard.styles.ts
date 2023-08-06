@@ -1,12 +1,26 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {scaleVertical} from '../../../../../app/theme';
+import { scaleFontSize, scaleVertical } from "../../../../../app/theme";
 
 export const noteCardStyles = StyleSheet.create({
-  noteCardContainer: {} as ViewStyle,
+  noteCardContainer: {
+    marginVertical: scaleVertical(10),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  } as ViewStyle,
+  dataContainer: {
+    width: '80%',
+  } as ViewStyle,
   text: {
     marginTop: scaleVertical(10),
   } as TextStyle,
   date: {
     marginTop: scaleVertical(16),
+  } as TextStyle,
+  removeButtonTextContainer: {
+    width: '20%',
+  } as ViewStyle,
+  removeButtonText: {
+    fontSize: scaleFontSize(12),
   } as TextStyle,
 });

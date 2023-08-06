@@ -2,6 +2,7 @@ import {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
+import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
 
 const useTODOList = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const useTODOList = () => {
   const handleSelectTODO = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setSelectedNote(note));
+      routeNavigate(ROOT_STACK.TODO_EDIT);
     },
     [dispatch],
   );
@@ -25,6 +27,7 @@ const useTODOList = () => {
     (note: ITODO) => {
       // Try to find note index in TODO list
       const noteIndex = TODOList.findIndex((noteItem) => note.id === noteItem.id);
+      console.log('noteIndex', noteIndex);
 
       // remove note by index from TODO list
       const modifiedArray = TODOList.splice(noteIndex, 1);

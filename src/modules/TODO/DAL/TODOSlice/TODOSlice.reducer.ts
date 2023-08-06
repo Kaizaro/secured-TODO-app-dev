@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {TODOSliceInitialState} from './TODOSlice.initialState';
-import {ITODO} from '../entities';
+import {ITODO} from '../../entities';
 
 export const TODOSlice = createSlice({
   name: 'TODOSlice',
