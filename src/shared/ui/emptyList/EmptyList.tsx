@@ -1,14 +1,16 @@
 import React, {FC} from 'react';
 
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
 import {emptyListStyles as styles} from './EmptyList.styles';
 import {IEmptyList} from './EmptyList.types';
+import {RegularText} from '../texts';
+import {APP_COLORS} from '../../../app/theme';
 
 const EmptyList: FC<IEmptyList> = ({message, innerStyle}) => {
   return (
     <View style={{...styles.container, ...innerStyle}}>
-      <Text>{message}</Text>
+      <RegularText color={APP_COLORS.GRAY}>{message}</RegularText>
     </View>
   );
 };
