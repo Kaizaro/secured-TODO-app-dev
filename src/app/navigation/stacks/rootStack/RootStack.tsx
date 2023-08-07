@@ -4,13 +4,18 @@ import {NO_HEADER_SCREEN_OPTIONS} from '../../constants';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import App from '../../../../../App';
 import {TODOListScreen, TODOAdd, TODOEdit} from '../../../../modules/TODO';
+import {AuthenticateScreen} from '../../../../modules/authentication';
 
 const Stack = createNativeStackNavigator();
 
 const RootStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={ROOT_STACK.AUTHENTICATION} component={App} options={{...NO_HEADER_SCREEN_OPTIONS}} />
+      <Stack.Screen
+        name={ROOT_STACK.AUTHENTICATION}
+        component={AuthenticateScreen}
+        options={{...NO_HEADER_SCREEN_OPTIONS}}
+      />
       <Stack.Screen name={ROOT_STACK.TODO_LIST} component={TODOListScreen} options={{...NO_HEADER_SCREEN_OPTIONS}} />
       <Stack.Screen
         name={ROOT_STACK.TODO_ADD}
