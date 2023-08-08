@@ -1,0 +1,19 @@
+import {useEffect, useState} from 'react';
+import {AppState} from 'react-native';
+
+export const useAppStateListener = () => {
+  const [appState, setAppState] = useState(AppState.currentState);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      console.log(nextAppState);
+      setAppState(nextAppState);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  return {appState};
+};
