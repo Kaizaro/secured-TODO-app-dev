@@ -27,7 +27,7 @@ const ConfigureAuthenticateScreen: FC = () => {
   }, [authenticateUser, getDeviceAuthenticateOptions]);
 
   useEffect(() => {
-    if (appState.current === 'active') {
+    if (appState === 'active') {
       handleDeviceSecurityLevel();
     }
   }, [appState, handleDeviceSecurityLevel]);

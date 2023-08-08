@@ -6,6 +6,7 @@ export const useAppStateListener = () => {
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
+      console.log(nextAppState);
       setAppState(nextAppState);
     });
 
