@@ -1,13 +1,21 @@
 import {useCallback} from 'react';
-import {authenticateAsync} from 'expo-local-authentication';
+import { authenticateAsync, getEnrolledLevelAsync } from "expo-local-authentication";
 
 export const useAuthenticate = () => {
   const authenticateUser = useCallback(async () => {
     const authResult = await authenticateAsync();
     console.log(authResult);
-
-    // return authResult;
+    if (authResult) {
+      return authResult.success;
+    } else return false;
   }, []);
 
-  return {authenticateUser};
+  const getDeviceAuthenticateOptions = useCallback(async () => {
+    const deviceAuthenticateOptions = await getEnrolledLevelAsync();
+
+    console.log('deviceAuthenticateOptions', deviceAuthenticateOptions);
+    return deviceAuthenticateOptions;
+  }, []);
+
+  return {authenticateUser, getDeviceAuthenticateOptions};
 };
