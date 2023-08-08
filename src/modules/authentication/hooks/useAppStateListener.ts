@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AppState} from 'react-native';
 
 export const useAppStateListener = () => {
