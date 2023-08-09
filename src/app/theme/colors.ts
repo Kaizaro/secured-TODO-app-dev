@@ -1,3 +1,6 @@
+/**
+ * ENUM with colors in application
+ */
 export enum APP_COLORS {
   RED = '#D5573B',
   VIOLET = '#4F359B',

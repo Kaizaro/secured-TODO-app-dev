@@ -5,11 +5,23 @@ import {NavigationContainer, createNavigationContainerRef} from '@react-navigati
 import {APP_LIGHT_THEME} from '../../theme';
 import {useRouter} from '../hooks';
 import {RootStack} from '../stacks';
+
+/**
+ * Ref for navigator. Uses for navigation funcs without hooks
+ */
 export const navigatorRef = createNavigationContainerRef();
 
+/**
+ * App navigator container
+ *
+ * @constructor
+ */
 const AppNavigation = () => {
   const {handleInitializeUserRoute} = useRouter();
 
+  /**
+   * Method for getting correct route for user
+   */
   const handleOnReady = useCallback(async () => {
     await handleInitializeUserRoute();
   }, [handleInitializeUserRoute]);

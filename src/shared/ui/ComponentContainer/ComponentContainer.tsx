@@ -19,6 +19,7 @@ const ComponentContainer: FunctionComponent<IComponentContainerProps> = ({
   isBottomEdged = true,
   isHorizontalPaddingEdged = true,
   isKeyboard = false,
+  testId,
 }) => {
   const {colors} = useTheme();
 
@@ -53,6 +54,7 @@ const ComponentContainer: FunctionComponent<IComponentContainerProps> = ({
 
   return (
     <SafeAreaView
+      testID={testId}
       edges={edges}
       style={{
         ...styles.safeArea,

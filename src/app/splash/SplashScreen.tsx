@@ -4,6 +4,11 @@ import {APP_COLORS} from '../theme';
 import {ComponentContainer, RegularText} from '../../shared/ui';
 import {splashScreenStyles as styles} from './SplashScreen.styles';
 
+/**
+ * The screen is loading when application starting
+ *
+ * @constructor
+ */
 const SplashScreen: FC = () => {
   return (
     <ComponentContainer isTopEdged={true} innerStyle={styles.container}>

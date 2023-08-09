@@ -5,6 +5,9 @@ export const TODOListScreenStyles = StyleSheet.create({
   container: {
     paddingTop: scaleVertical(12),
   } as ViewStyle,
+  contentContainer: {
+    paddingTop: scaleVertical(12),
+  } as ViewStyle,
   separator: {
     marginVertical: scaleVertical(10),
   },

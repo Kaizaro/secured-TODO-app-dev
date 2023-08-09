@@ -1,6 +1,9 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {TODOFormSliceInitialState} from './TODOFormSlice.initialState';
 
+/**
+ * TODOForm slice (actions and reducer)
+ */
 export const TODOFormSlice = createSlice({
   name: 'TODOFormSlice',
   initialState: TODOFormSliceInitialState,

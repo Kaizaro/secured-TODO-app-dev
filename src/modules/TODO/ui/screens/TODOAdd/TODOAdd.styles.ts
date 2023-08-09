@@ -1,8 +1,9 @@
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {Platform, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {APP_COLORS, scaleFontSize, scaleHorizontal, scaleVertical} from '../../../../../app/theme';
 
 export const TODOAddStyles = StyleSheet.create({
   container: {
+    marginTop: Platform.OS === 'android' ? scaleVertical(24) : 0,
     width: '100%',
     paddingHorizontal: scaleHorizontal(12),
     paddingVertical: scaleVertical(10),

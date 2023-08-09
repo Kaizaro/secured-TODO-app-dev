@@ -1,6 +1,9 @@
 import {DefaultTheme, Theme} from '@react-navigation/native';
 import {APP_COLORS} from './colors';
 
+/**
+ * Constant with default application theme
+ */
 export const APP_LIGHT_THEME = {
   dark: false,
   colors: {

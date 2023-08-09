@@ -5,7 +5,7 @@ import {cardStyles as styles} from './Card.styles';
 
 const Card: FC<ICard> = ({handleCardPress, children, innerStyle}) => {
   return (
-    <PressableComponent onPress={handleCardPress} style={{...styles.card, ...innerStyle}}>
+    <PressableComponent onPress={handleCardPress} innerStyle={{...styles.card, ...innerStyle}}>
       {children}
     </PressableComponent>
   );

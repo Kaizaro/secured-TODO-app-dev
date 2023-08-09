@@ -1,3 +1,6 @@
+/**
+ * ENUM with screen names
+ */
 export enum ROOT_STACK {
   SPLASH = 'SPLASH',
   CONFIG_AUTHENTICATION = 'CONFIG_AUTHENTICATION',
