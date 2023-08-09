@@ -8,13 +8,25 @@ import {useTODOList} from '../../../hooks';
 import {View} from 'react-native';
 import {ButtonTransparent} from '../../../../../shared/ui/buttons';
 
+/**
+ * Card of TODO item
+ * @param note
+ * @param innerStyle
+ * @constructor
+ */
 const NoteCard: FC<INoteCard> = ({note, innerStyle}) => {
   const {handleSelectTODO, handleRemoveTODOFromList} = useTODOList();
 
+  /**
+   * Functions handles when card is pressed
+   */
   const handleCardPress = useCallback(() => {
     handleSelectTODO(note);
   }, [handleSelectTODO, note]);
 
+  /**
+   * Functions handles when remove button is pressed
+   */
   const handleRemoveButtonPress = useCallback(() => {
     handleRemoveTODOFromList(note);
   }, [handleRemoveTODOFromList, note]);

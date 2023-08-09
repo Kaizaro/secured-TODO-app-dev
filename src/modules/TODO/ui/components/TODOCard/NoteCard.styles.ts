@@ -1,9 +1,9 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import { scaleFontSize, scaleVertical } from "../../../../../app/theme";
+import {scaleFontSize, scaleVertical} from '../../../../../app/theme';
 
 export const noteCardStyles = StyleSheet.create({
   noteCardContainer: {
-    marginVertical: scaleVertical(10),
+    marginVertical: scaleVertical(12),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

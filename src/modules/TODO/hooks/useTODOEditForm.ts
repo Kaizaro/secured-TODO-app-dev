@@ -7,11 +7,20 @@ import {useTODOList} from './useTODOList';
 import dayjs from 'dayjs';
 import {routeBack} from '../../../app/navigation';
 
+/**
+ * Hook for work with TODO item
+ */
 export const useTODOEditForm = () => {
   const dispatch = useAppDispatch();
   const {handleAddTODOToList, handleEditTODOInList} = useTODOList();
+  /**
+   * Get TODOInputValue from store
+   */
   const TODOInputValue = useAppSelector((state) => state.TODOForm.TODOInputValue);
 
+  /**
+   * handle changing TODO text in input field
+   */
   const handleSetTODOInputValue = useCallback(
     (TODOText: string) => {
       dispatch(TODOFormSliceActions.setTODOInputValue(TODOText));
@@ -19,10 +28,16 @@ export const useTODOEditForm = () => {
     [dispatch],
   );
 
+  /**
+   * Clear text input field
+   */
   const handleClearTODOInputValue = useCallback(() => {
     dispatch(TODOFormSliceActions.clearTODOInputValue());
   }, [dispatch]);
 
+  /**
+   * Method saving inputted TODO item and put it in store
+   */
   const handleSaveTODOToList = useCallback(() => {
     const id = uuid.v4().toString();
     handleAddTODOToList({
@@ -35,6 +50,9 @@ export const useTODOEditForm = () => {
     routeBack();
   }, [TODOInputValue, handleAddTODOToList]);
 
+  /**
+   * Method get TODO item, modifying it and put modified item in store
+   */
   const handleEditTODO = useCallback(
     (id: string) => {
       handleEditTODOInList({

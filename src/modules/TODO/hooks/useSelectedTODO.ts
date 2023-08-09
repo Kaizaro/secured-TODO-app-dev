@@ -1,6 +1,9 @@
 import {useMemo} from 'react';
 import {useAppSelector} from '../../../app/store/hooks';
 
+/**
+ * Hook gets selectedTODO values and extract them
+ */
 const useSelectedTODO = () => {
   const selectedTODO = useAppSelector((state) => state.TODO.selectedTODO);
   const TODOId = useMemo(() => selectedTODO?.id, [selectedTODO?.id]);

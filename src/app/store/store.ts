@@ -3,6 +3,9 @@ import {configureStore} from '@reduxjs/toolkit';
 
 import {persistedReducer} from './persistReducer';
 
+/**
+ * Config for redux store
+ */
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
