@@ -11,7 +11,7 @@ const testTODO = {
   isSelected: false,
 } as ITODO;
 
-describe('initialize TODO reducer', () => {
+describe('Test TODO reducer', () => {
   it('get the initial state', () => {
     expect(TODOSlice.reducer(undefined, {})).toEqual(TODOSliceInitialState);
   });
