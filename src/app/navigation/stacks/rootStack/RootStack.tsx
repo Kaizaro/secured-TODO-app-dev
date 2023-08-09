@@ -2,7 +2,6 @@ import * as React from 'react';
 import {ROOT_STACK} from './RootStack.screens';
 import {NO_HEADER_SCREEN_OPTIONS} from '../../constants';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import App from '../../../../../App';
 import {TODOListScreen, TODOAdd, TODOEdit} from '../../../../modules/TODO';
 import {ConfigureAuthenticateScreen} from '../../../../modules/authentication';
 import {SplashScreen} from '../../../splash';

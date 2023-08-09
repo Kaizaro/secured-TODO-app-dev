@@ -26,15 +26,19 @@ const TODOListScreen: FC = () => {
 
   const EmptyListComponent = useMemo(() => <EmptyNotesList />, []);
 
+  const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.id}_${index}`, []);
+
   return (
     <ComponentContainer isTopEdged={true} innerStyle={styles.container} backgroundColor={APP_COLORS.BORDER}>
       <FlatList
+        keyExtractor={handleKeyExtractor}
         data={TODOList}
         renderItem={renderNoteCards}
         bounces={false}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={AddTODOButton}
         ListEmptyComponent={EmptyListComponent}
+        windowSize={13}
       />
     </ComponentContainer>
   );

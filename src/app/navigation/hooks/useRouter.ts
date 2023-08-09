@@ -1,12 +1,15 @@
 import {useCallback} from 'react';
 import {useAuthenticate} from '../../../modules/authentication/hooks/useAuthenticate';
-import { routeNavigate, routeReplace, routeReset } from "../utils";
+import {routeReplace} from '../utils';
 import {ROOT_STACK} from '../stacks';
 import {SecurityLevel} from 'expo-local-authentication';
 
 const useRouter = () => {
   const {authenticateUser, getDeviceAuthenticateOptions} = useAuthenticate();
 
+  /**
+   *
+   */
   const handleAuthenticatedDeviceFlow = useCallback(async () => {
     const isAuthenticateSucceed = await authenticateUser();
 
