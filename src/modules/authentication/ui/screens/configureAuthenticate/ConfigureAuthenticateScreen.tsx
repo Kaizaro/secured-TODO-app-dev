@@ -33,7 +33,7 @@ const ConfigureAuthenticateScreen: FC = () => {
   }, [appState, handleDeviceSecurityLevel]);
 
   return (
-    <ComponentContainer isTopEdged={true} innerStyle={styles.container}>
+    <ComponentContainer testId={'ConfigureAuthenticateScreen'} isTopEdged={true} innerStyle={styles.container}>
       <View style={styles.textContainer}>
         <BoldText>{'Thank you for using "Security TODO"'}</BoldText>
         <RegularText innerStyle={styles.description}>
