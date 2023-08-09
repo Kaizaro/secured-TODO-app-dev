@@ -5,7 +5,7 @@ import {ITODO} from '../../../entities';
 import {NoteCard, EmptyNotesList} from '../../components';
 import {ComponentContainer} from '../../../../../shared/ui';
 import {TODOListScreenStyles as styles} from './TODOList.styles';
-import {APP_COLORS} from '../../../../../app/theme';
+import { APP_COLORS, scaleVertical } from "../../../../../app/theme";
 import {ROOT_STACK, routeNavigate} from '../../../../../app/navigation';
 import {ButtonMain} from '../../../../../shared/ui/buttons';
 
@@ -22,8 +22,8 @@ const TODOListScreen: FC = () => {
   /**
    * method for render TODO item from FlatList
    */
-  const renderNoteCards = useCallback<ListRenderItem<ITODO>>(({item}) => {
-    return <NoteCard note={item} />;
+  const renderNoteCards = useCallback<ListRenderItem<ITODO>>(({item, index}) => {
+    return <NoteCard note={item} innerStyle={{marginTop: index === 0 ? scaleVertical(24) : 0}} />;
   }, []);
 
   /**
