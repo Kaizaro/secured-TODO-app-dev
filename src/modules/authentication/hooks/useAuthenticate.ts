@@ -1,5 +1,5 @@
 import {useCallback} from 'react';
-import { authenticateAsync, getEnrolledLevelAsync } from "expo-local-authentication";
+import {authenticateAsync, getEnrolledLevelAsync} from 'expo-local-authentication';
 
 export const useAuthenticate = () => {
   const authenticateUser = useCallback(async () => {
