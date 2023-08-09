@@ -2,8 +2,6 @@ import {ITODO} from '../entities';
 import {TODOSlice, TODOSliceActions, TODOSliceInitialState} from '../DAL';
 import uuid from 'react-native-uuid';
 import dayjs from 'dayjs';
-import {renderHook} from '@testing-library/react-hooks';
-import {useTODOList} from '../hooks';
 
 const testTODO = {
   id: uuid.v4().toString(),
