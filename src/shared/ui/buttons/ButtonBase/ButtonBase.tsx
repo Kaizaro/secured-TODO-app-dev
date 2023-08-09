@@ -4,9 +4,9 @@ import {IButtonBase} from './ButtonBase.types';
 import {buttonBaseStyles as styles} from './ButtonBase.styles';
 
 import {ButtonLoader} from '../ButtonLoader';
-import { PressableComponent } from "../PressableComponent";
-import { APP_COLORS, scaleVertical } from "../../../../app/theme";
-import { RegularText } from "../../texts";
+import {PressableComponent} from '../PressableComponent';
+import {APP_COLORS, scaleVertical} from '../../../../app/theme';
+import {RegularText} from '../../texts';
 
 export const ButtonBase: FC<IButtonBase> = ({
   onPress,

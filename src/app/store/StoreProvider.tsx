@@ -5,7 +5,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {IDefaultFC} from '../../shared/types';
 
 /**
- * Provider for configure redux store
+ * Provider for configure redux store and redux persist
  *
  * @param children
  * @constructor

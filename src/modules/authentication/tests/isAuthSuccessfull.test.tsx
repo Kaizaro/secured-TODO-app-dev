@@ -5,6 +5,9 @@ import {SecurityLevel} from 'expo-local-authentication';
 import {ConfigureAuthenticateScreen} from '../ui';
 import renderer from 'react-test-renderer';
 
+/**
+ * Checking normal render of hook (test)
+ */
 describe('useAuthentication', () => {
   it('should mount ok', () => {
     const {result} = renderHook(() => useAuthenticate());
@@ -12,6 +15,9 @@ describe('useAuthentication', () => {
   });
 });
 
+/**
+ * Checks is user can authorize
+ */
 describe('isUserAuthorized', () => {
   it('should return isUserAuthorized boolean', async () => {
     const {result} = renderHook(() => useAuthenticate());
@@ -19,6 +25,10 @@ describe('isUserAuthorized', () => {
   });
 });
 
+/**
+ * Check if user with unsupported or wrong security level
+ * see screen with button to the device security settings
+ */
 describe('isConfigurationScreenLoaded', () => {
   it(`if security level not equal to SecurityLevel.SECRET (${SecurityLevel.SECRET}) or SecurityLevel.BIOMENTRIC (${SecurityLevel.BIOMETRIC})`, async () => {
     const {result} = renderHook(() => useAuthenticate());

@@ -5,10 +5,19 @@ import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
 import {cloneDeep} from 'lodash';
 
+/**
+ * Hook with functions for work with TODO list
+ */
 const useTODOList = () => {
   const dispatch = useAppDispatch();
+  /**
+   * Get TODOList from store
+   */
   const TODOList = useAppSelector((state) => state.TODO.TODOList);
 
+  /**
+   * handle dispatching new TODO item to store
+   */
   const handleAddTODOToList = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
@@ -16,6 +25,9 @@ const useTODOList = () => {
     [dispatch, TODOList],
   );
 
+  /**
+   * handle editing TODO in store
+   */
   const handleEditTODOInList = useCallback(
     (note: ITODO) => {
       const clonedTODOList = cloneDeep(TODOList);
@@ -27,6 +39,9 @@ const useTODOList = () => {
     [dispatch, TODOList],
   );
 
+  /**
+   * handle selecting of TODO
+   */
   const handleSelectTODO = useCallback(
     (note: ITODO) => {
       dispatch(TODOSliceActions.setSelectedNote(note));
@@ -35,6 +50,9 @@ const useTODOList = () => {
     [dispatch],
   );
 
+  /**
+   * handle removing of TODO from store
+   */
   const handleRemoveTODOFromList = useCallback(
     (note: ITODO) => {
       // Filter TODO list without TODO item which need to be deleted

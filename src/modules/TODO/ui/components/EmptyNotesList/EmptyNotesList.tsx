@@ -10,6 +10,9 @@ const HARDCODED_empty_list_message = "The TODO list is empty. Let's try to add o
 const HARDCODED_empty_list_button = 'Add new TODO';
 
 const EmptyNotesList: FC<IDefaultFC> = ({innerStyle}) => {
+  /**
+   * Functions handles when add new TODO item button is pressed
+   */
   const handleAddNewNoteButtonPress = useCallback(() => {
     routeNavigate(ROOT_STACK.TODO_ADD);
   }, []);

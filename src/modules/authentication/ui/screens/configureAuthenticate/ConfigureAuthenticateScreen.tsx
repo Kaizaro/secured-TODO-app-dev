@@ -7,16 +7,27 @@ import {useAppStateListener, useAuthenticate} from '../../../hooks';
 import {SecurityLevel} from 'expo-local-authentication';
 import {ROOT_STACK, routeReplace} from '../../../../../app/navigation';
 
+/**
+ * Screen is shown when user is not setup correct security level
+ * @constructor
+ */
 const ConfigureAuthenticateScreen: FC = () => {
   const {appState} = useAppStateListener();
   const {authenticateUser, getDeviceAuthenticateOptions} = useAuthenticate();
 
+  /**
+   * Method handles go to settings button press
+   * Behavior is different on iOS and android
+   */
   const handleGoToSecuritySettingsButtonPress = useCallback(() => {
     Platform.OS === 'ios'
       ? Linking.openURL('App-Prefs:TOUCHID_PASSCODE')
       : Linking.sendIntent('android.settings.SECURITY_SETTINGS');
   }, []);
 
+  /**
+   * Checking security level and getting correct route
+   */
   const handleDeviceSecurityLevel = useCallback(async () => {
     const deviceSecurityLevel = await getDeviceAuthenticateOptions();
     if (deviceSecurityLevel !== SecurityLevel.NONE) {
@@ -26,6 +37,10 @@ const ConfigureAuthenticateScreen: FC = () => {
     }
   }, [authenticateUser, getDeviceAuthenticateOptions]);
 
+  /**
+   * Listener which calls device security level check
+   * every time of appState changes
+   */
   useEffect(() => {
     if (appState === 'active') {
       handleDeviceSecurityLevel();

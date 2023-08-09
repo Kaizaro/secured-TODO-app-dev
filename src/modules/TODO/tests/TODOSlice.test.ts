@@ -11,11 +11,20 @@ const testTODO = {
   isSelected: false,
 } as ITODO;
 
+/**
+ * Test for check work of TODO slice
+ */
 describe('Test TODO reducer', () => {
+  /**
+   * Getting of initial state of TODOForm slice
+   */
   it('get the initial state', () => {
     expect(TODOSlice.reducer(undefined, {})).toEqual(TODOSliceInitialState);
   });
 
+  /**
+   * Check working when put new item in TODOStore
+   */
   it('handles add item to TODO list', () => {
     expect(TODOSlice.reducer(TODOSliceInitialState, TODOSliceActions.setNotesList([testTODO]))).toEqual({
       ...TODOSliceInitialState,
@@ -23,6 +32,9 @@ describe('Test TODO reducer', () => {
     });
   });
 
+  /**
+   * Check selecting of item in TODOStore
+   */
   it('handles set item as selected from TODO list', () => {
     expect(TODOSlice.reducer(TODOSliceInitialState, TODOSliceActions.setSelectedNote(testTODO))).toEqual({
       ...TODOSliceInitialState,
@@ -30,6 +42,9 @@ describe('Test TODO reducer', () => {
     });
   });
 
+  /**
+   * Check unselecting item in TODOStore
+   */
   it('handles removing selected item from TODO list', () => {
     expect(TODOSlice.reducer(TODOSliceInitialState, TODOSliceActions.clearSelectedNote())).toEqual({
       ...TODOSliceInitialState,
@@ -37,6 +52,9 @@ describe('Test TODO reducer', () => {
     });
   });
 
+  /**
+   * Check removing of item from TODOStore
+   */
   it('handles clear TODO list', () => {
     expect(TODOSlice.reducer(TODOSliceInitialState, TODOSliceActions.clearNotesList())).toEqual({
       ...TODOSliceInitialState,
@@ -44,6 +62,9 @@ describe('Test TODO reducer', () => {
     });
   });
 
+  /**
+   * Check clear store function
+   */
   it('handles clear all reducer', () => {
     expect(TODOSlice.reducer(TODOSliceInitialState, TODOSliceActions.clearAll())).toEqual(TODOSliceInitialState);
   });

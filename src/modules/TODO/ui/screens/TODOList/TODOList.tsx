@@ -12,20 +12,32 @@ import {ButtonMain} from '../../../../../shared/ui/buttons';
 const TODOListScreen: FC = () => {
   const {TODOList} = useTODOList();
 
+  /**
+   * Functions handles when add new TODO item is pressed
+   */
   const handleAddButtonPress = useCallback(() => {
     routeNavigate(ROOT_STACK.TODO_ADD);
   }, []);
 
+  /**
+   * method for render TODO item from FlatList
+   */
   const renderNoteCards = useCallback<ListRenderItem<ITODO>>(({item}) => {
     return <NoteCard note={item} />;
   }, []);
 
+  /**
+   * Button component in the top of screen
+   */
   const AddTODOButton = useMemo(() => {
     return TODOList.length > 0 ? <ButtonMain onPress={handleAddButtonPress} text={'Add TODO'} /> : <></>;
   }, [TODOList.length, handleAddButtonPress]);
 
   const EmptyListComponent = useMemo(() => <EmptyNotesList />, []);
 
+  /**
+   * Function for optimized work of FlatList which extract key of items
+   */
   const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.id}_${index}`, []);
 
   return (

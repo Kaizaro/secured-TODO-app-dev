@@ -3,6 +3,7 @@ import React, {FC} from 'react';
 import {PressableProps, StyleProp, ViewStyle} from 'react-native';
 
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import { APP_TOUCHABLE_ACTIVE_OPACITY } from "../PressableComponent/styles";
 
 interface IProps extends PressableProps {
   children: React.ReactNode;
