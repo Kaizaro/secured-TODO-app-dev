@@ -1,4 +1,4 @@
-import {StyleSheet, ViewStyle} from 'react-native';
+import { Dimensions, StyleSheet, ViewStyle } from "react-native";
 import {scaleVertical} from '../../../../../app/theme';
 
 export const TODOListScreenStyles = StyleSheet.create({
@@ -11,4 +11,10 @@ export const TODOListScreenStyles = StyleSheet.create({
   separator: {
     marginVertical: scaleVertical(10),
   },
+  emptyList: {
+    flex: 1,
+    height: Dimensions.get('window').height - scaleVertical(100),
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as ViewStyle,
 });
