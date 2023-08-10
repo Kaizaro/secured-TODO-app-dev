@@ -33,7 +33,7 @@ const TODOListScreen: FC = () => {
     return TODOList.length > 0 ? <ButtonMain onPress={handleAddButtonPress} text={'Add TODO'} /> : <></>;
   }, [TODOList.length, handleAddButtonPress]);
 
-  const EmptyListComponent = useMemo(() => <EmptyNotesList />, []);
+  const EmptyListComponent = useMemo(() => <EmptyNotesList innerStyle={styles.emptyList} />, []);
 
   /**
    * Function for optimized work of FlatList which extract key of items
