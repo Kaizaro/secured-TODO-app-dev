@@ -72,6 +72,7 @@ const useTODOList = () => {
    */
   const handleRemoveTODOFromList = useCallback(
     async (todo: ITODO) => {
+      console.log(todo);
       const response = await deleteTODO(todo.uuid);
       if (response) {
         fetchTODOList();
