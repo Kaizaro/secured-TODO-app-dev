@@ -7,7 +7,7 @@ export const deleteTODO = async (todoUuid: string) => {
     const endpoint = generateEndpointHelper('delete-todo-item');
     const params = {todoItemUuid: todoUuid};
     console.log(endpoint, params);
-    return await fetchAPI.delete<IDeleteTODOResponse, IDeleteTODORequestParams>(endpoint, params);
+    return await fetchAPI.delete<IDeleteTODOResponse, IDeleteTODORequestParams>(endpoint, {data: params});
   } catch (error) {
     console.log(error);
   }
