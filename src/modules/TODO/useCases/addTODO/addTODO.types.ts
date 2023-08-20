@@ -1,7 +1,7 @@
 import {ITODO} from '../../entities';
 
 export interface IAddTODORequestParams {
-  note: ITODO;
+  todoItem: ITODO;
 }
 
 export interface IAddTODOResponse {}

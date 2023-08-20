@@ -5,6 +5,7 @@ import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
 import {cloneDeep, isArray} from 'lodash';
 import {getTODOList} from '../useCases';
+import {addTODO} from "../useCases/addTODO";
 
 /**
  * Hook with functions for work with TODO list
@@ -30,11 +31,14 @@ const useTODOList = () => {
    * handle dispatching new TODO item to store
    */
   const handleAddTODOToList = useCallback(
-    (note: ITODO) => {
-
+    async (todo: ITODO) => {
+      const response = await addTODO(todo);
+      if (response) {
+        fetchTODOList();
+      }
       // dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
     },
-    [dispatch, TODOList],
+    [fetchTODOList],
   );
 
   /**
