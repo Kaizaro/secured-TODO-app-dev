@@ -6,6 +6,7 @@ import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
 import {cloneDeep, isArray} from 'lodash';
 import {getTODOList} from '../useCases';
 import {addTODO} from "../useCases/addTODO";
+import {deleteTODO} from "../useCases/deleteTODO";
 
 /**
  * Hook with functions for work with TODO list
@@ -70,12 +71,16 @@ const useTODOList = () => {
    * handle removing of TODO from store
    */
   const handleRemoveTODOFromList = useCallback(
-    (note: ITODO) => {
+    async (todo: ITODO) => {
+      const response = await deleteTODO(todo.uuid);
+      if (response) {
+        fetchTODOList();
+      }
       // Filter TODO list without TODO item which need to be deleted
-      const filteredArray = TODOList.filter((state) => note.uuid !== state.uuid);
-      dispatch(TODOSliceActions.setNotesList(filteredArray));
+      // const filteredArray = TODOList.filter((state) => note.uuid !== state.uuid);
+      // dispatch(TODOSliceActions.setNotesList(filteredArray));
     },
-    [dispatch, TODOList],
+    [fetchTODOList],
   );
 
   return {
