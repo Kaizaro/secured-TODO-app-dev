@@ -43,8 +43,6 @@ export const useTODOEditForm = () => {
     handleAddTODOToList({
       uuid: id,
       text: TODOInputValue,
-      updatedAt: dayjs().format('YYYY/MM/DD HH:mm'),
-      timestamp: dayjs().valueOf(),
     });
     routeBack();
   }, [TODOInputValue, handleAddTODOToList]);
