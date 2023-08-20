@@ -19,6 +19,7 @@ const useTODOList = () => {
   const fetchTODOList = useCallback(async () => {
     const response = await getTODOList();
     console.log(response);
+    console.log(response?.data);
 
     if (response && isArray(response?.data.items)) {
       dispatch(TODOSliceActions.setNotesList(response.data.items));
