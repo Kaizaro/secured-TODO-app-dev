@@ -38,7 +38,7 @@ const TODOListScreen: FC = () => {
   /**
    * Function for optimized work of FlatList which extract key of items
    */
-  const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.id}_${index}`, []);
+  const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.uuid}_${index}`, []);
 
   useEffect(() => {
     fetchTODOList();

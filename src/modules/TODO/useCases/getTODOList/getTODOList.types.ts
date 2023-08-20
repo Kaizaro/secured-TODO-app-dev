@@ -1,5 +1,5 @@
 import {ITODO} from '../../entities';
 
-export interface IGetTODOList {
+export interface IGetTODOListResponse {
   items: ITODO[];
 }

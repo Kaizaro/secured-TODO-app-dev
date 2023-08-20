@@ -31,7 +31,8 @@ const useTODOList = () => {
    */
   const handleAddTODOToList = useCallback(
     (note: ITODO) => {
-      dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
+
+      // dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
     },
     [dispatch, TODOList],
   );
@@ -42,7 +43,7 @@ const useTODOList = () => {
   const handleEditTODOInList = useCallback(
     (note: ITODO) => {
       const clonedTODOList = cloneDeep(TODOList);
-      const noteIndex = clonedTODOList.findIndex((noteItem) => note.id === noteItem.id);
+      const noteIndex = clonedTODOList.findIndex((noteItem) => note.uuid === noteItem.uuid);
       clonedTODOList[noteIndex] = {...note};
       console.log('clonedTODOList', clonedTODOList);
       dispatch(TODOSliceActions.setNotesList(clonedTODOList));
@@ -67,7 +68,7 @@ const useTODOList = () => {
   const handleRemoveTODOFromList = useCallback(
     (note: ITODO) => {
       // Filter TODO list without TODO item which need to be deleted
-      const filteredArray = TODOList.filter((state) => note.id !== state.id);
+      const filteredArray = TODOList.filter((state) => note.uuid !== state.uuid);
       dispatch(TODOSliceActions.setNotesList(filteredArray));
     },
     [dispatch, TODOList],

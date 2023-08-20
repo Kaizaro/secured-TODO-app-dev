@@ -41,9 +41,8 @@ export const useTODOEditForm = () => {
   const handleSaveTODOToList = useCallback(() => {
     const id = uuid.v4().toString();
     handleAddTODOToList({
-      id,
+      uuid: id,
       text: TODOInputValue,
-      isSelected: false,
       updatedAt: dayjs().format('YYYY/MM/DD HH:mm'),
       timestamp: dayjs().valueOf(),
     });
@@ -56,11 +55,10 @@ export const useTODOEditForm = () => {
   const handleEditTODO = useCallback(
     (id: string) => {
       handleEditTODOInList({
-        id,
+        uuid: id,
         text: TODOInputValue,
         updatedAt: dayjs().format('YYYY/MM/DD HH:mm'),
         timestamp: dayjs().valueOf(),
-        isSelected: false,
       });
       routeBack();
     },
