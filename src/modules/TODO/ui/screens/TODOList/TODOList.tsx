@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useMemo} from 'react';
+import React, {FC, useCallback, useEffect, useMemo} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 import {useTODOList} from '../../../hooks';
 import {ITODO} from '../../../entities';
@@ -10,7 +10,7 @@ import {ROOT_STACK, routeNavigate} from '../../../../../app/navigation';
 import {ButtonMain} from '../../../../../shared/ui/buttons';
 
 const TODOListScreen: FC = () => {
-  const {TODOList} = useTODOList();
+  const {TODOList, fetchTODOList} = useTODOList();
 
   /**
    * Functions handles when add new TODO item is pressed
@@ -38,7 +38,11 @@ const TODOListScreen: FC = () => {
   /**
    * Function for optimized work of FlatList which extract key of items
    */
-  const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.id}_${index}`, []);
+  const handleKeyExtractor = useCallback((item: ITODO, index: number) => `${item.uuid}_${index}`, []);
+
+  useEffect(() => {
+    fetchTODOList();
+  }, [fetchTODOList]);
 
   return (
     <ComponentContainer isTopEdged={true} innerStyle={styles.container} backgroundColor={APP_COLORS.BORDER}>

@@ -2,9 +2,9 @@
  * TODO item interface
  */
 export interface ITODO {
-  id: string;
+  _id?: string;
+  uuid: string;
   text: string;
-  updatedAt: string;
-  timestamp: number;
-  isSelected: boolean;
+  updatedAt?: string;
+  timestamp?: number;
 }

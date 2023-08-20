@@ -4,11 +4,10 @@ import uuid from 'react-native-uuid';
 import dayjs from 'dayjs';
 
 const testTODO = {
-  id: uuid.v4().toString(),
+  uuid: uuid.v4().toString(),
   text: 'test-text',
   updatedAt: dayjs().valueOf().toString(),
   timestamp: dayjs().valueOf(),
-  isSelected: false,
 } as ITODO;
 
 /**

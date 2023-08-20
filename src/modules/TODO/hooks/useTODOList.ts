@@ -3,7 +3,10 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isArray} from 'lodash';
+import {getTODOList} from '../useCases';
+import {addTODO} from "../useCases/addTODO";
+import {deleteTODO} from "../useCases/deleteTODO";
 
 /**
  * Hook with functions for work with TODO list
@@ -15,14 +18,28 @@ const useTODOList = () => {
    */
   const TODOList = useAppSelector((state) => state.TODO.TODOList);
 
+  const fetchTODOList = useCallback(async () => {
+    const response = await getTODOList();
+    console.log(response);
+    console.log(response?.data);
+
+    if (response && isArray(response?.data.items)) {
+      dispatch(TODOSliceActions.setNotesList(response.data.items));
+    }
+  }, [dispatch]);
+
   /**
    * handle dispatching new TODO item to store
    */
   const handleAddTODOToList = useCallback(
-    (note: ITODO) => {
-      dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
+    async (todo: ITODO) => {
+      const response = await addTODO(todo);
+      if (response) {
+        fetchTODOList();
+      }
+      // dispatch(TODOSliceActions.setNotesList([...TODOList, note]));
     },
-    [dispatch, TODOList],
+    [fetchTODOList],
   );
 
   /**
@@ -31,7 +48,7 @@ const useTODOList = () => {
   const handleEditTODOInList = useCallback(
     (note: ITODO) => {
       const clonedTODOList = cloneDeep(TODOList);
-      const noteIndex = clonedTODOList.findIndex((noteItem) => note.id === noteItem.id);
+      const noteIndex = clonedTODOList.findIndex((noteItem) => note.uuid === noteItem.uuid);
       clonedTODOList[noteIndex] = {...note};
       console.log('clonedTODOList', clonedTODOList);
       dispatch(TODOSliceActions.setNotesList(clonedTODOList));
@@ -54,16 +71,22 @@ const useTODOList = () => {
    * handle removing of TODO from store
    */
   const handleRemoveTODOFromList = useCallback(
-    (note: ITODO) => {
+    async (todo: ITODO) => {
+      console.log(todo);
+      const response = await deleteTODO(todo.uuid);
+      if (response) {
+        fetchTODOList();
+      }
       // Filter TODO list without TODO item which need to be deleted
-      const filteredArray = TODOList.filter((state) => note.id !== state.id);
-      dispatch(TODOSliceActions.setNotesList(filteredArray));
+      // const filteredArray = TODOList.filter((state) => note.uuid !== state.uuid);
+      // dispatch(TODOSliceActions.setNotesList(filteredArray));
     },
-    [dispatch, TODOList],
+    [fetchTODOList],
   );
 
   return {
     TODOList,
+    fetchTODOList,
     handleAddTODOToList,
     handleEditTODOInList,
     handleSelectTODO,
