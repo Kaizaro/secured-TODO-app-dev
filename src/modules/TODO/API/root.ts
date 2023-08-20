@@ -1,1 +1,1 @@
-export const TODOHost = '/todo/';
+export const TODOHost = '/todos/';

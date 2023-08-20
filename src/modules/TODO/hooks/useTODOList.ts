@@ -3,7 +3,8 @@ import {useAppDispatch, useAppSelector} from '../../../app/store/hooks';
 import {ITODO} from '../entities';
 import {TODOSliceActions} from '../DAL';
 import {ROOT_STACK, routeNavigate} from '../../../app/navigation';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isArray} from 'lodash';
+import {getTODOList} from '../useCases';
 
 /**
  * Hook with functions for work with TODO list
@@ -14,6 +15,15 @@ const useTODOList = () => {
    * Get TODOList from store
    */
   const TODOList = useAppSelector((state) => state.TODO.TODOList);
+
+  const fetchTODOList = useCallback(async () => {
+    const response = await getTODOList();
+    console.log(response);
+
+    if (response && isArray(response?.data.items)) {
+      dispatch(TODOSliceActions.setNotesList(response.data.items));
+    }
+  }, [dispatch]);
 
   /**
    * handle dispatching new TODO item to store
@@ -64,6 +74,7 @@ const useTODOList = () => {
 
   return {
     TODOList,
+    fetchTODOList,
     handleAddTODOToList,
     handleEditTODOInList,
     handleSelectTODO,

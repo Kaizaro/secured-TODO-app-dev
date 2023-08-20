@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseUrl = 'https://localhost:3000';
+const baseURL = 'http://localhost:3000';
 
 export const fetchAPI = axios.create({
-  baseUrl,
+  baseURL,
   timeout: 1000,
 });
