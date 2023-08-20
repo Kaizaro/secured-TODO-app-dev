@@ -4,4 +4,6 @@ export interface IAddTODORequestParams {
   todoItem: ITODO;
 }
 
-export interface IAddTODOResponse {}
+export interface IAddTODOResponse {
+  success: string;
+}
